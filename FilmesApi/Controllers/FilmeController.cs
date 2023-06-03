@@ -13,9 +13,12 @@ namespace FilmesApi.Controllers
         [HttpPost]
         public void AdicionaFilme([FromBody] Filme filme)
         {
-            filmes.Add(filme);
-            Console.WriteLine(filme.Titulo);
-            Console.WriteLine(filme.Duracao);
+            {
+                filmes.Add(filme);
+                Console.WriteLine(filme.Titulo);
+                Console.WriteLine(filme.Duracao);
+            }
+            
         }
     }
 }
