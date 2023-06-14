@@ -1,3 +1,6 @@
+using FilmesApi.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +12,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+var connectionString = builder.Configuration.GetConnectionString
+    ("FilmeConnection");
+
+builder.Services.AddDbContext<FilmeContext>(opts =>
+opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment())
 {
